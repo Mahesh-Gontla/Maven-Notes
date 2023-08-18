@@ -1,0 +1,71 @@
+Maven -- Maven is an application build tool to build a Java application
+
+Eg:-   .java -----compile-------> .class
+       source             target/executable
+      
+Compiler:- is a software it will help to convert from high-level language to low-level language or Machine language
+
+   .java ----> .class(bundle) ----> .jar(bundle) ----> .war
+   
+The group of .class files is called a .jar file (java archive)
+The group of .jar files is called a .war file (web archive)
+.ear (enterprise web archive)
+
+Maven -- application build tool and project management tool
+pom.xml -- configuration file for maven
+Maven uses pom.xml(project object modules) to define the project and its dependencies. 
+---- It will help to build the structure of the project, associate the files and help to build the application.
+
+Pre-Requisites: Need to install Java environment on Linux Machine
+java -- sudo yum install java-11-openjdk -y
+javac -- sudo yum install java-11-openjdk-devel -y
+
+How to download and install Maven?
+1) Go to the Maven site, and download the .tar.gz file
+wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+2)extract the file (tar xvfz apache-maven-xxx.tar.gz -C /opt/)
+tar -xvzf apache-maven-3.9.4-bin.tar.gz -C /opt/
+ls -l /opt/
+sudo chown -R ec2-user:ec2-user /opt/apache-maven-3.9.4/ -- for user executing 
+ls -l /opt/
+3)configure it for a user 
+   mvn -- it won't work in the user's directory
+   export M2_HOME=/opt/apache-maven-3.9.4/
+   export PATH=$PATH:$M2_HOME/bin
+   mvn --version
+   ls -a
+   vi .bash_profiel
+   export M2_HOME=/opt/apache-maven-3.9.4/
+   export PATH=$PATH:$M2_HOME/bin
+   configure on the command line and make them permanent so place in user home_dir ~/user/.bash_profile
+4)mvn --version
+
+Maven commands:
+1)mvn archetype:generate  -- it will create a project structure
+2)mvn validate    -- it will validate project structure
+3)mvn compile     -- it will convert .java files into .class files
+4)mvn test        -- it will test .class files
+5)mvn package     -- it will help to create .jar,.war or .ear
+6)mvn install     -- it will install the package locally
+7)mvn deploy      -- it will install the package remotely.
+
+Creating a Sample Jar File using Maven
+1)mvn archetype:generate
+  project number :
+  group id       : unique project name (technical adda)
+  artifact id    : output file name (simplejar.jar)
+  package id    : same as group id
+  version        : 1.0-SNAPSHOT
+  ls
+  tree .
+Need to go for a simple jar dir there we have to execute the commands
+2)mvn validate
+3)mvn compile
+ tree .
+4)mvn test 
+5)mvn package
+ tree . 
+ 
+ To see the content in the .jar file  
+ jar -tvf target/simplejar-1.0-SNAPSHOT.jar
+ java -cp target/simplejar-1.0-SNAPSHOT.jar technicaladda.App
